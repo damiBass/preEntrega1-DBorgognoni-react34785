@@ -1,28 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import styled from "styled-components";
 
-function ClickCounter({ stock }) {
-  const [clicks, setClicks] = useState(1);
+const CounterContainerStyled = styled.div`
+  border-top: 1px solid purple;
+  display: flex;
+`;
+
+function ItemCounter({ stock }) {
+  const [mount, setMount] = useState(0);
 
   function handleClick() {
-    if (clicks < stock) {
-      setClicks(clicks + 1);
+    if (mount < stock) {
+      setMount(mount + 1);
     }
   }
 
   function handeleRest() {
-    if (clicks > 1) {
-      setClicks(clicks - 1);
+    if (mount >= 1) {
+      setMount(mount - 1);
     }
   }
 
   return (
-    <>
-      <button onClick={handeleRest}>-</button>
-      <button onClick={handleClick}>+</button>
+    <CounterContainerStyled>
+      <div style={{ flex: 0.9 }}>
+        <button onClick={handeleRest}>-</button>
+        <button onClick={handleClick}>+</button>
+      </div>
 
-      <p>Hiciste {clicks} de clicks</p>
-    </>
+      <p>Cantidad {mount}</p>
+    </CounterContainerStyled>
   );
 }
 
-export default ClickCounter;
+export default ItemCounter;
