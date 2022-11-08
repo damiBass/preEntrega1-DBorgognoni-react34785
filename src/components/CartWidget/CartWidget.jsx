@@ -5,7 +5,7 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 function CartWidget() {
   return (
     <div style={{ cursor: "pointer" }}>
-      <FontAwesomeIcon icon={faCartShopping} />
+      <FontAwesomeIcon icon={faCartShopping} color="red" fontSize={25}/>
     </div>
   );
 }

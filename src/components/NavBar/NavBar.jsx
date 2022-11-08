@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import styled from "styled-components";
-import logo from "../../assets/pngwing.com.png";
+import logo from "../../assets/pngegg.png";
 import CartWidget from "../CartWidget/CartWidget";
 
 const NavBarContainer = styled.nav`
   margin: 0;
   min-height: 60px;
-  background-color: purple;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,22 +23,11 @@ const NavBarContainer = styled.nav`
 const NavBarOptionContainer = styled.div`
   display: flex;
   gap: 100px;
-
-  span {
-    cursor: pointer;
-    transition: 0.3s;
-
-    &:hover {
-      color: black;
-      font-weight: bold;
-    }
-  }
 `;
 
 const LogoContainer = styled.div`
   display: flex;
-  align-items: flex-start;
-  font-size: 12px;
+
   flex-direction: column;
   flex: 1;
   cursor: pointer;
@@ -102,6 +92,18 @@ const MenuBurguerStyled = styled.div`
   }
 `;
 
+const LinkStyled = styled(Link)`
+  text-decoration: none;
+  transition: 0.5s;
+  color: royalblue;
+  font-weight: bold;
+
+  &:hover {
+    color: black;
+    font-weight: bolder;
+  }
+`;
+
 function NavBar() {
   const [widthScreen, setWidthScreen] = useState(window.innerWidth);
   const [isOpen, setOpen] = useState(true);
@@ -131,28 +133,21 @@ function NavBar() {
   return (
     <NavBarContainer>
       <LogoContainer>
-        <img
-          alt="logo"
-          src={logo}
-          width={breakpointXl ? 30 : 60}
-          height={breakpointXl ? 30 : 60}
-        />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            paddingLeft: !breakpointXl ? "1rem" : 0,
-          }}
-        >
-          <span>Game Over</span>
-          <span>Store</span>
-        </div>
+        <LinkStyled to="/">
+          <img
+            alt="logo"
+            src={logo}
+            width={breakpointXl ? 30 : 60}
+            height={breakpointXl ? 30 : 60}
+          />
+        </LinkStyled>
       </LogoContainer>
       {!breakpointXl ? (
         <NavBarOptionContainer>
-          <span>Tienda</span>
-          <span>Los mas vendidos</span>
-          <span>Biblioteca</span>
+          <LinkStyled to="/category/smartphones">Smartphones</LinkStyled>
+          <LinkStyled to="/category/laptops">Laptops</LinkStyled>
+          <LinkStyled to="/category/fragrances">Fragancias</LinkStyled>
+          <LinkStyled to={""}>Los mas vendidos</LinkStyled>
         </NavBarOptionContainer>
       ) : null}
       <CartWidget />
