@@ -1,30 +1,24 @@
-import React from "react";
-import styled from "styled-components";
-import ButtonAdd from "../ButtonAdd/ButtonAdd";
+import React, { useState, useContext } from "react";
+import cartContext from "../../store/CartContext";
+import { Link } from "react-router-dom";
+
 import ItemCounter from "../ItemCounter/ItemCounter";
 
-const ItemContainerStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: black;
-  max-width: 1200px;
-  margin: auto;
-
-  img {
-    max-width: 600px;
-  }
-`;
-
-const ItemCounterContainerStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 1200px;
-  margin: auto;
-  color: black;
-`;
+import { ItemContainerStyled, ItemCounterContainerStyled } from "./style";
 
 function ItemDetail({ item }) {
+  const [cart, setCart] = useState(false);
+
+  const { addItem } = useContext(cartContext);
+
+  function onAddToCart(amount) {
+    const itemsInCart = {
+      ...item,
+      quantity: amount,
+    };
+    addItem(itemsInCart);
+    setCart(true);
+  }
   return (
     <>
       {" "}
@@ -34,10 +28,16 @@ function ItemDetail({ item }) {
         <p>{item.description}</p>
         <p>Cantidad disponible: {item.stock}</p>
       </ItemContainerStyled>
-      <ItemCounterContainerStyled>
-        <ItemCounter stock={item.stock} />
-        <ButtonAdd text="Agregar al carrito" />
-      </ItemCounterContainerStyled>
+      {!cart ? (
+        <ItemCounterContainerStyled>
+          <ItemCounter stock={item.stock} onAddToCart={onAddToCart} />
+        </ItemCounterContainerStyled>
+      ) : (
+        <div>
+          <Link to="/cart">Ir al carrito</Link>
+          <Link to="/">Volver al catalogo</Link>
+        </div>
+      )}
     </>
   );
 }

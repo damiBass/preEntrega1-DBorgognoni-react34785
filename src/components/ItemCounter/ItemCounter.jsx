@@ -1,33 +1,20 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 
-const CounterContainerStyled = styled.div`
-  border-top: 1px solid purple;
-  display: flex;
-  align-items: center;
-  p {
-    font-size: 13px;
-  }
-`;
+import Button from "../Button/Button";
+import { CounterContainerStyled, ButtonCounterStyled } from "./style";
 
-const ButtonCounterStyled = styled.button`
-  width: 40%;
-  border-radius: 5px;
-  cursor: pointer;
-`;
-
-function ItemCounter({ stock }) {
-  const [mount, setMount] = useState(0);
+function ItemCounter({ stock, onAddToCart }) {
+  const [amount, setMount] = useState(0);
 
   function handleClick() {
-    if (mount < stock) {
-      setMount(mount + 1);
+    if (amount < stock) {
+      setMount(amount + 1);
     }
   }
 
   function handeleRest() {
-    if (mount >= 1) {
-      setMount(mount - 1);
+    if (amount >= 1) {
+      setMount(amount - 1);
     }
   }
 
@@ -56,7 +43,8 @@ function ItemCounter({ stock }) {
           +
         </ButtonCounterStyled>
       </div>
-      <p>Cantidad {mount}</p>
+      <p>Cantidad {amount}</p>
+      <Button text="Agregar al carrito" onClick={() => onAddToCart(amount)} />
     </CounterContainerStyled>
   );
 }
