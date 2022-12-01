@@ -25,7 +25,13 @@ function ItemDetail({ item }) {
       <ItemContainerStyled>
         <h1>{item.title}</h1>
         <img src={item.thumbnail} alt={item.title} />
-        <p>{item.description}</p>
+        <p style={{ textAlign: "center" }}>
+          Descripción del producto: <br />
+          {item.description}
+        </p>
+        <p style={{ fontSize: "20px", fontWeight: "bolder", color: "red" }}>
+          USD {item.price}
+        </p>
         <p>Cantidad disponible: {item.stock}</p>
       </ItemContainerStyled>
       {!cart ? (
@@ -33,7 +39,14 @@ function ItemDetail({ item }) {
           <ItemCounter stock={item.stock} onAddToCart={onAddToCart} />
         </ItemCounterContainerStyled>
       ) : (
-        <div>
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "20px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <Link to="/cart">Ir al carrito</Link>
           <Link to="/">Volver al catalogo</Link>
         </div>

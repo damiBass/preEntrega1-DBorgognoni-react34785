@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ItemCounter from "../ItemCounter/ItemCounter";
 
 import {
   CardContainerStyled,
@@ -19,6 +18,7 @@ function Item(props) {
       <CardDescriptionStyled>
         <h3>{props.title}</h3>
         <span>USD {props.price}</span>
+        <br />
         {props.discountPercentage > 15 && (
           <span>% {props.discountPercentage}</span>
         )}
@@ -41,7 +41,6 @@ function Item(props) {
           </button>
         </Link>
       </CardDescriptionStyled>
-      <ItemCounter stock={props.stock} />
     </CardContainerStyled>
   );
 }

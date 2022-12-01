@@ -52,5 +52,3 @@ function ItemListContainer() {
 }
 
 export default ItemListContainer;
-
-// ver order y filter

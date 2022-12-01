@@ -23,6 +23,7 @@ function App() {
             <Route path="/checkout/:resId" element={<Checkout />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </CartContextProvider>
     </div>

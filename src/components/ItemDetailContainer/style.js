@@ -9,7 +9,7 @@ export const ItemContainerStyled = styled.div`
   margin: auto;
 
   img {
-    max-width: 600px;
+    max-width: 350px;
   }
 `;
 

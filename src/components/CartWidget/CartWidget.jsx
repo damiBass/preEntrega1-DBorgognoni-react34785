@@ -13,10 +13,11 @@ function CartWidget() {
       <Link to="/cart">
         <FontAwesomeIcon icon={faCartShopping} color="red" fontSize={25} />
       </Link>
-
-      <StyledBadge>
-        {totalItemsInCart() > 0 ? totalItemsInCart() : null}
-      </StyledBadge>
+      <div style={{ position: "absolute", top: "10px", right: "12px" }}>
+        <StyledBadge>
+          <p>{totalItemsInCart() > 0 ? totalItemsInCart() : null}</p>
+        </StyledBadge>
+      </div>
     </div>
   );
 }

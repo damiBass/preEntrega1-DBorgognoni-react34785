@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const CardContainerStyled = styled.div`
+  display: flex;
+  flex-direction: column;
   text-align: center;
   width: 250px;
   border-radius: 20px;
@@ -31,12 +33,7 @@ export const CardImageStyled = styled.div`
 
 export const CardDescriptionStyled = styled.div`
   height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 5px;
-
+  padding-top: 20px;
   h3 {
     margin: 0;
   }

@@ -31,12 +31,7 @@ function Form(props) {
         onInputChange={onInputChange}
         title="Nombre y Apellido"
       />
-      <Input
-        name="email"
-        value={userData.email}
-        onInputeChange={onInputChange}
-        title="Email"
-      />
+      <Input name="email" onInputeChange={onInputChange} title="Email" />
       <Input
         name="phone"
         value={userData.phone}
@@ -49,14 +44,6 @@ function Form(props) {
         onInputChange={onInputChange}
         title="Direccion"
       />
-      <label>
-        <input type="radio" value="credit" required />
-        Credito
-      </label>
-      <label>
-        <input type="radio" value="cash" required />
-        Efectivo
-      </label>
       <button onClick={onSubmit}>Crear orden</button>
     </FormStyled>
   );

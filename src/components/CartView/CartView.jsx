@@ -34,8 +34,6 @@ function CartView() {
     };
 
     getUpdateOrderStock(data).then((resId) => {
-      // ver manejo de errores
-      // mostrar algo al user cuando se finaliza la compra
       console.log(resId);
       clear();
       navigate(`/checkout/${resId}`);
@@ -66,7 +64,11 @@ function CartView() {
                 <h3> Valor del producto : USD {item.price}</h3>
                 <h3>Cantidad del producto : {item.quantity}</h3>
               </div>
-              <FontAwesomeIcon icon={faTrash} className="trash" />
+              <FontAwesomeIcon
+                icon={faTrash}
+                className="trash"
+                onClick={() => removeItem(item.id)}
+              />
             </div>
           ))}
         </StyledWrapperCard>
@@ -86,5 +88,3 @@ function CartView() {
 }
 
 export default CartView;
-
-// mensaje final al usuario por la compra
