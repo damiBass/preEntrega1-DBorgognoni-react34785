@@ -1,9 +1,16 @@
 import React from "react";
+import { Link, useParams } from "react-router-dom";
 
 function Checkout() {
-  // generar boton para volver al inicio
-  // mostrar el id de la compra generada con useParams()
-  return <div style={{ color: "black" }}>Checkout</div>;
+  const { resId } = useParams();
+
+  return (
+    <div style={{ textAlign: "center" }}>
+      <h1>Gracias por tu compra!</h1>
+      <p>Este es tu nº de identificacion de producto: ({resId})</p>
+      <Link to="/">Volver al catalogo</Link>
+    </div>
+  );
 }
 
 export default Checkout;

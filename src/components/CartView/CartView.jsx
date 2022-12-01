@@ -5,7 +5,6 @@ import Button from "../Button/Button";
 import { getUpdateOrderStock } from "../../service/firebase";
 import { CartWrapper, CheckoutWrapper, StyledWrapperCard } from "./style";
 import Form from "../Form/Form";
-import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
@@ -13,13 +12,7 @@ function CartView() {
   const { cartItems, totalItemsInCart, clear, totalPriceItems, removeItem } =
     useContext(cartContext);
 
-  const [orderOk, setOrderOk] = useState(false);
-
   const navigate = useNavigate();
-
-  function finishOrder() {
-    setOrderOk(true);
-  }
 
   function emptyCart() {
     clear();
@@ -34,7 +27,6 @@ function CartView() {
     };
 
     getUpdateOrderStock(data).then((resId) => {
-      console.log(resId);
       clear();
       navigate(`/checkout/${resId}`);
     });
@@ -76,9 +68,7 @@ function CartView() {
           <CheckoutWrapper>
             <h4>Total de articulos : {totalItemsInCart()}</h4>
             <h5>Precio total a pagar: USD {totalPriceItems()}</h5>
-            <Form onSubmit={finishOrder} />
-            {!orderOk ? null : <h6>Ya puedes finalizar tu compra!</h6>}
-            <Button onClick={createBuyOrder} text="Finalizar compra" />
+            <Form onSubmit={createBuyOrder} />
             <Button onClick={emptyCart} text="Vaciar carrito" />
           </CheckoutWrapper>
         ) : null}

@@ -7,7 +7,6 @@ function Form(props) {
     name: "",
     email: "",
     phone: "",
-    address: "",
   });
 
   function onInputChange(evt) {
@@ -31,18 +30,17 @@ function Form(props) {
         onInputChange={onInputChange}
         title="Nombre y Apellido"
       />
-      <Input name="email" onInputeChange={onInputChange} title="Email" />
+      <Input
+        name="email"
+        onInputChange={onInputChange}
+        title="Email"
+        value={userData.email}
+      />
       <Input
         name="phone"
         value={userData.phone}
         onInputChange={onInputChange}
         title="Telefono"
-      />
-      <Input
-        name="address"
-        value={userData.address}
-        onInputChange={onInputChange}
-        title="Direccion"
       />
       <button onClick={onSubmit}>Crear orden</button>
     </FormStyled>
